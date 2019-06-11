@@ -6,6 +6,9 @@ class RoomController < ApplicationController
     @rooms = Rooms.all 
   end
 
+  def show
+  end 
+
   def new
     @room = Room.new(room_params)
   end
@@ -21,6 +24,7 @@ class RoomController < ApplicationController
   def listing
     
   end
+
 
   def pricing
     
