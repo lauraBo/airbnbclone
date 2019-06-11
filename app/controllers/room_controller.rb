@@ -11,6 +11,11 @@ class RoomController < ApplicationController
   end
 
   def create
+    @room = Room.new(room_params)
+    if @room.save
+      redirect_to listing_room_path(@room), notice: "listing saved"
+    else
+      render :new, notice: "listing not saved. Please fille in all fields" 
   end
 
   def listing
@@ -38,6 +43,14 @@ class RoomController < ApplicationController
   end
 
   def update
+    if @room.update(room_params)
+      flash[:notice] = "saved"
+    else
+      flash[:notice] = "oops...didn't save"
+    end
+    redirect_back(fallback_location: request.referer)
+  end 
+
     
   end
 
