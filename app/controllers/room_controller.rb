@@ -1,39 +1,56 @@
 class RoomController < ApplicationController
+
+  before_action :set_room, except: [:index, :new, :create]
+
   def index
     @rooms = Rooms.all 
   end
 
   def new
+    @room = Room.new(room_params)
   end
 
   def create
   end
 
   def listing
-    @room = Room.find(params[:id])
+    
   end
 
   def pricing
-    @room = Room.find(params[:id])
+    
   end
 
   def description
-    @room = Room.find(params[:id])
+    
   end
 
   def photo_upload
-    @room = Room.find(params[:id])
+    
   end
 
   def amenities
-    @room = Room.find(params[:id])
+    
   end
 
   def location
-    @room = Room.find(params[:id])
+    
   end
 
   def update
-    @room = Room.find(params[:id])
+    
   end
+
+  private 
+    def set_room
+      @room = Room.find(params[:id])
+    end 
+
+    def room_params
+      params.require(:room).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :summary, :address, is_tv, :is_kitchen, :is_air, 
+      :is_heating, :is_internet, :price, :active)
+    end 
+
+   
+
 end
