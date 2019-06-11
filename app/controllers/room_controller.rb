@@ -1,19 +1,19 @@
 class RoomController < ApplicationController
-
+  before_action #authenticate user?
   before_action :set_room, except: [:index, :new, :create]
 
-  def index
+  def index #public page
     @rooms = Rooms.all 
   end
 
-  def show
+  def show #public page
   end 
 
-  def new
+  def new #private page
     @room = Room.new(room_params)
   end
 
-  def create
+  def create #private page
     @room = Room.new(room_params)
     if @room.save
       redirect_to listing_room_path(@room), notice: "listing saved"
@@ -46,7 +46,7 @@ class RoomController < ApplicationController
     
   end
 
-  def update
+  def update #private page
     if @room.update(room_params)
       flash[:notice] = "saved"
     else

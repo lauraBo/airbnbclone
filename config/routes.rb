@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-  get 'room/index'
-  get 'room/new'
-  get 'room/create'
-  get 'room/listing'
-  get 'room/pricing'
-  get 'room/description'
-  get 'room/photo_upload'
-  get 'room/amenities'
-  get 'room/location'
-  get 'room/update'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-resources :pages
+root 'pages#home'
+resources :rooms, except: [:edit] do
+  member do
+    get 'listing'
+    get 'pricing'
+    get 'description'
+    get 'amenities'
+    get 'photo_upload'
+    get 'location'
 
 end
 
