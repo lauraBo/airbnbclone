@@ -10,6 +10,8 @@ resources :rooms, except: [:edit] do
     get 'amenities'
     get 'photo_upload'
     get 'location'
+  end
+end 
 
 end
 
