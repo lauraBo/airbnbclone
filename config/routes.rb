@@ -11,6 +11,7 @@ resources :rooms, except: [:edit] do
     get 'photo_upload'
     get 'location'
   end
+  resources :photos, only: [:create, :destroy]
 end 
 
 end
