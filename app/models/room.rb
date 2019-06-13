@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
     has_many :photos 
+    has_many :reservations
 
     validates :home_type, presence: true
     validates :room_type, presence: true
