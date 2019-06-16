@@ -14,6 +14,7 @@ class ReservationsController < ApplicationController
         @reservation.save 
 
         flash[:notice] = "Congratulations! Booked Successfully"
+        redirect_to room 
 
     end 
 
