@@ -73,7 +73,6 @@ gem 'bootstrap-sass', '~> 3.4.1'
 
 gem 'devise', '~> 4.6.2'
 
-
-
-
 gem 'paperclip', '~> 5.1.0'
+
+gem 'toastr-rails', '~> 1.0'
