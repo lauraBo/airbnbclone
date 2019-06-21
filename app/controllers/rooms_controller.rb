@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
     if @room.save
       redirect_to listing_room_path(@room), notice: "listing saved"
     else
-      render :new, notice: "listing not saved. Please fille in all fields" 
+      render :new, notice: "listing not saved. Please fill in all fields" 
   end
 
   def listing
