@@ -6,19 +6,27 @@ class RoomsController < ApplicationController
     @rooms = current_user.rooms
   end
 
-  def show #public page
-  end 
+  
+    def show
+      @photos = @room.photos
+     
+    end
+ 
 
   def new 
     @room = current_user.rooms.build
   end
 
-  def create #private page
+
+
+  def create
     @room = current_user.rooms.build(room_params)
     if @room.save
-      redirect_to listing_room_path(@room), notice: "listing saved"
+      redirect_to listing_room_path(@room), notice: "Saved..."
     else
-      render :new, notice: "listing not saved. Please fill in all fields" 
+      flash[:alert] = "Something went wrong..."
+      render :new
+    end
   end
 
   def listing
@@ -47,17 +55,16 @@ class RoomsController < ApplicationController
     
   end
 
-  def update #private page
+  def update 
     if @room.update(room_params)
       flash[:notice] = "saved"
     else
-      flash[:notice] = "oops...didn't save"
+      flash[:alert] = "oops...didn't save"
     end
     redirect_back(fallback_location: request.referer)
   end 
 
-    
-  end
+
 
   private 
     def set_room
