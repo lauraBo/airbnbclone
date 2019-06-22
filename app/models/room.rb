@@ -2,6 +2,7 @@ class Room < ApplicationRecord
     belongs_to :user
     has_many :photos 
     has_many :reservations
+    has_many_attached :images
     
 
     validates :home_type, presence: true
