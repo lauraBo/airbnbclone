@@ -1,27 +1,31 @@
 class ReservationsController < ApplicationController
-
+    
+  
     def create
-        room = Room.find(params[:room_id])
-
+      room = Room.find(params[:room_id])
+  
+      if current_user == room.user
+        flash[:alert] = "You cannot book your own property!"
+      else
         start_date = Date.parse(reservation_params[:start_date])
         end_date = Date.parse(reservation_params[:end_date])
         days = (end_date - start_date).to_i + 1
-
-        @reservation = Reservation.build(reservation_params)  * or is this .new? *
-        @reservation.room = room 
+  
+        @reservation = current_user.reservations.build(reservation_params)
+        @reservation.room = room
         @reservation.price = room.price
         @reservation.total = room.price * days
-        @reservation.save 
-
-        flash[:notice] = "Congratulations! Booked Successfully"
-        redirect_to room 
-
-    end 
-
-
+        @reservation.save
+  
+        flash[:notice] = "Booked Successfully!"
+      end
+      redirect_to room
+    end
+  
+    
+  
     private
-    def reservation_params
+      def reservation_params
         params.require(:reservation).permit(:start_date, :end_date)
-    end 
-
-end
+      end
+  end
