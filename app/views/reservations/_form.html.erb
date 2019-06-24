@@ -6,5 +6,16 @@
           <%= f.text_field :end_date %>
         
         <br/>
-      <%= f.submit "Book Now" %>
+      <%= f.submit "Book Now", class: "btn btn-normal btn-block" %>
     <% end %>
+
+    <script>
+        $(function () {
+            $('#reservation_start_date').datepicker({
+                dateFormat: 'dd-mm-yy'
+            });
+            $('#reservation_end _date').datepicker({
+                dateFormat: 'dd-mm-yy'
+        });
+        });
+    </script>
