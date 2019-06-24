@@ -3,6 +3,9 @@ class Room < ApplicationRecord
     has_many :photos 
     has_many :reservations
     has_many_attached :images
+
+    geocoded_by :address
+    after_validation :geocode, if: :address_changed?
     
 
     validates :home_type, presence: true
