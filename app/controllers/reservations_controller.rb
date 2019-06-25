@@ -1,6 +1,8 @@
 class ReservationsController < ApplicationController
     before_action :authenticate_user!
   
+ 
+
     def create
       room = Room.find(params[:room_id])
   
@@ -19,7 +21,7 @@ class ReservationsController < ApplicationController
   
         flash[:notice] = "Booked Successfully!"
       end
-      redirect_to listing_room_path
+      redirect_to room
     end
   
     
