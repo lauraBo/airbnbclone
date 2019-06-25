@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <span><i class="fa fa-bolt" style="color: #ffb400"></i> $<%= @room.price %></span>
@@ -49,6 +51,15 @@
     dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
     return [$.inArray(dmy, unavailableDates) == -1];
     }
+
+    //new function>>> 
+      function resetUTC(d){
+      var f = moment.utc(d);
+      var now = new Date(f._d);
+      var utcDate = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+      return utcDate;
+      }
+
         $(function () {
 
          unavailableDates = [];
@@ -59,7 +70,7 @@
             success: function(data) {
 
                 $.each(data, function(arrID, arrValue) {
-                    for(var d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate() + 1)) {
+                    for(var d = resetUTC(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate() + 1)) {
                     unavailableDates.push($.datepicker.formatDate('d-m-yy', d));
                     }
                 });

@@ -17,5 +17,6 @@
 //= require toastr
 //= require activestorage
 //= require turbolinks
+//= require moment
 //= require_tree .
 
