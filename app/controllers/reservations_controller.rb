@@ -19,7 +19,7 @@ class ReservationsController < ApplicationController
   
         flash[:notice] = "Booked Successfully!"
       end
-      redirect_to room
+      redirect_to listing_room_path
     end
   
     

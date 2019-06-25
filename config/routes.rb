@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-resources :rooms, except: [:edit] do
+ resources :rooms, except: [:edit] do
   member do
     get 'listing'
     get 'pricing'
@@ -16,9 +16,10 @@ resources :rooms, except: [:edit] do
     get 'preload'
     get 'preview'
   end
+
   resources :photos, only: [:create, :destroy]
   resources :reservations, only: [:create]
-end 
+ end 
 
 end
 

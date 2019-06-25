@@ -84,6 +84,7 @@ class RoomsController < ApplicationController
     }
 
     render json: output
+  end 
 
 
   private 
