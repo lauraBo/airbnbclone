@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  
+
   root 'pages#home'
   devise_for :users
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show]
  resources :rooms, except: [:edit] do
@@ -19,9 +19,10 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:create, :destroy]
   resources :reservations, only: [:create]
- end 
+ end
 
   get '/your_trips' => 'reservations#your_trips'
   get '/your_reservations' => 'reservations#your_reservations'
-end
 
+  get 'dashboard' => 'dashboards#index'
+end
