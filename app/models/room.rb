@@ -1,12 +1,15 @@
 class Room < ApplicationRecord
+
+  enum instant: {Request: 0, Instant:1}
+  
     belongs_to :user
-    has_many :photos 
+    has_many :photos
     has_many :reservations
     has_many_attached :images
 
     geocoded_by :address
     after_validation :geocode, if: :address_changed?
-    
+
 
     validates :home_type, presence: true
     validates :room_type, presence: true

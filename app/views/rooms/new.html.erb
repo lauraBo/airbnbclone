@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    Create your listing: 
+    Create your listing:
   </div>
   <div class="panel-body">
     <div class="container">
@@ -22,6 +22,13 @@
               <label>Room Type</label>
               <%= f.select :room_type, [["Entire", "Entire"], ["Private", "Private"], ["Shared", "Shared"]],
                             id: "room_type", prompt: "Select...", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="col-md-4 select">
+            <div class="form-group">
+              <label>Booking Type</label>
+              <%= f.select :instant, Room.instants.map {|key, value| [key.humanize, key]}, selected: 'Instant', prompt: "Select...", class: "form-control" %>
             </div>
           </div>
 
@@ -58,4 +65,3 @@
     </div>
   </div>
 </div>
-
