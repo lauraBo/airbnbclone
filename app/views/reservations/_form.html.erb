@@ -2,10 +2,10 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <span><i class="fa fa-bolt" style="color: #ffb400"></i> $<%= @room.price %></span>
+    <span><% if @room.Instant? %> <i class="fa fa-bolt" style="color: #ffb400"></i> <% end %>  $<%= @room.price %></span>
     <span class="pull-right">Per Night</span>
   </div>
-  
+
   <div class="panel-body">
     <%= form_for([@room, @room.reservations.new]) do |f| %>
         <div class="row">
@@ -40,10 +40,16 @@
       </div>
 
         <br/>
-        <%= f.submit "Book Now", id: "btn_book", class: "btn btn-normal btn-block", disabled: true %>
+        <% if @room.Instant? %>
+            <%= f.submit "Book Now", id: "btn_book", class: "btn btn-normal btn-block", disabled: true %>
+        <% else %>
+            <%= f.submit "Request Now", id: "btn_book", class: "btn btn-normal btn-block", disabled: true %>
         <% end %>
+
+      <% end %>
       </div>
     </div>
+    
 
     <script>
 
@@ -52,7 +58,7 @@
     return [$.inArray(dmy, unavailableDates) == -1];
     }
 
-    //new function>>> 
+    //new function>>>
       function resetUTC(d){
       var f = moment.utc(d);
       var now = new Date(f._d);
@@ -83,7 +89,7 @@
                 onSelect: function(selected) {
                     $('#reservation_end_date').datepicker("option", "minDate", selected);
                     $('#reservation_end_date').attr("disabled", false);
-                     
+
                  var start_date = $('#reservation_start_date').datepicker('getDate');
                 var end_date = $('#reservation_end_date').datepicker('getDate');
                 var nights = (end_date - start_date)/1000/60/60/24 + 1;
@@ -111,14 +117,14 @@
                   var total = nights * <%= @room.price %>
                   $('#reservation_nights').text(nights);
                   $('#reservation_total').text(total);
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
+
+
+
+
+
+
+
+
                      }
                     }
                     });
