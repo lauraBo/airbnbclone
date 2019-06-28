@@ -1,5 +1,6 @@
 class CalendarsController < ApplicationController
 before_action :authenticate_user!
+include ApplicationHelper
 
 def host
     @rooms = current_user.rooms
@@ -12,7 +13,7 @@ def host
       params[:room_id] = params[:q][:room_id]
     end
 
-    @search = Reservation.ransack(params[:q])
+     @search = Reservation.ransack(params[:q])
 
     if params[:room_id]
       @room = Room.find(params[:room_id])

@@ -85,4 +85,5 @@ gem 'momentjs-rails', '~> 2.17', '>= 2.17.1'
 
 gem 'fullcalendar-rails', '~> 3.4.0'
 
-gem 'ransack', '~> 1.7'
+
+gem 'ransack', '~> 2.1'
