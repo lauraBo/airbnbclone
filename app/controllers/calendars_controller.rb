@@ -22,7 +22,7 @@ def host
       end_of_month = (start_date + 1.months).end_of_month # => Aug 31
 
       @events = @room.reservations.joins(:user)
-                      .select('reservations.*, users.fullname, users.image, users.email, users.uid')
+                      .select('reservations.*, users.fullname, users.email')
                       .where('(start_date BETWEEN ? AND ?) AND status <> ?', first_of_month, end_of_month, 2)
       #@events.each{ |e| e.image = avatar_url(e) }
       #@days = Calendar.where("room_id = ? AND day BETWEEN ? AND ?", params[:room_id], first_of_month, end_of_month)
