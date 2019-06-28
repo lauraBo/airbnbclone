@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require jquery-ui/datepicker
@@ -18,5 +19,5 @@
 //= require activestorage
 //= require turbolinks
 //= require moment
-//= require fullcalendar 
+//= require fullcalendar
 //= require_tree .

@@ -7,12 +7,12 @@ def host
     params[:start_date] ||= Date.current.to_s
     params[:room_id] ||= @rooms[0] ? @rooms[0].id : nil
 
-    #if params[:q].present?
-      #params[:start_date] = params[:q][:start_date]
-      #params[:room_id] = params[:q][:room_id]
-    #end
+    if params[:q].present?
+      params[:start_date] = params[:q][:start_date]
+      params[:room_id] = params[:q][:room_id]
+    end
 
-    #@search = Reservation.ransack(params[:q])
+    @search = Reservation.ransack(params[:q])
 
     if params[:room_id]
       @room = Room.find(params[:room_id])
@@ -32,4 +32,9 @@ def host
       #@days = []
     end
   end
+
+  private
+    def calendar_params
+      params.require(:calendar).permit([:price, :status, :start_date, :end_date])
+    end
 end
