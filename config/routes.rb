@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:create, :destroy]
   resources :reservations, only: [:create]
+  resources :calendars
  end
 
   get '/your_trips' => 'reservations#your_trips'
