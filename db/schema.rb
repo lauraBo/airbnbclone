@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_004807) do
+ActiveRecord::Schema.define(version: 2019_07_01_173756) do
 
   create_table "calendars", force: :cascade do |t|
     t.date "day"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2019_06_29_004807) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_calendars_on_room_id"
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "photos", force: :cascade do |t|
