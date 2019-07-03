@@ -6,5 +6,6 @@ class ReservationMailer < ApplicationMailer
     mail(to: @recipient.email, subject: "Your Reservation")
   end
 
+#mailer should have a paypal request with total price of stay. email of guest is obtained from reservation form
 
 end
