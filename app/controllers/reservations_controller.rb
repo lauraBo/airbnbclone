@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-    before_action :authenticate_user! # will need to remove this as guests will not be required
+    #before_action :authenticate_user! # will need to remove this as guests will not be required
     # to create a user account or sign in
     before_action :set_reservation, only: [:approve, :decline]
 
@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
         days = (end_date - start_date).to_i + 1
 
 
-        @reservation = current_user.reservations.build(reservation_params)
+        @reservation = Reservation.new(reservation_params)
         # need to change this from current_user to guest
         @reservation.room = room
         @reservation.price = room.price
