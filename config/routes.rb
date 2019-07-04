@@ -35,4 +35,7 @@ Rails.application.routes.draw do
   end
 
     get '/host_calendar' => "calendars#host"
+
+    get '/notification_settings' => 'settings#edit'
+    post '/notification_settings' => 'settings#update'
 end

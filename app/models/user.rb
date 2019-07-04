@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
 def add_setting
   Setting.create(user: self, enable_sms: true, enable_email: true)
+end 
 
 
 end
