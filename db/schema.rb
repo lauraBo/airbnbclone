@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_235110) do
+ActiveRecord::Schema.define(version: 2019_07_04_001231) do
 
   create_table "calendars", force: :cascade do |t|
     t.date "day"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_07_03_235110) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "status", default: 0
+    t.string "guestemail"
+    t.string "guestname"
     t.index ["room_id"], name: "index_reservations_on_room_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end

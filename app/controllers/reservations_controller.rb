@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
         start_date = Date.parse(reservation_params[:start_date])
         end_date = Date.parse(reservation_params[:end_date])
         days = (end_date - start_date).to_i + 1
-  
+
 
         @reservation = current_user.reservations.build(reservation_params)
         # need to change this from current_user to guest
@@ -26,10 +26,10 @@ class ReservationsController < ApplicationController
 
       if @reservation.save
         if room.Request?
-          flash[:notice] = "Request sent successfully!"   #then send mailer with paypal request with total price
+          flash[:notice] = "Request sent successfully!"   # then send mailer with paypal request with total price
         else
           @reservation.Approved!
-          flash[:notice] = "Reservation created successfully!" #then send mailer with paypal request with total price
+          flash[:notice] = "Reservation created successfully!" # then send mailer with paypal request with total price
         end
       else
         flash[:notice] = "Cannot make a reservation at this time!"
@@ -67,7 +67,7 @@ class ReservationsController < ApplicationController
       end
 
       def reservation_params
-        params.require(:reservation).permit(:start_date, :end_date)
+        params.require(:reservation).permit(:start_date, :end_date, :guestname, :guestemail)
         # add guest name , email and phone number to permit?
       end
   end

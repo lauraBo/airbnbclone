@@ -8,14 +8,7 @@ class User < ApplicationRecord
 
   has_many :rooms
   has_many :reservations
-
-  has_one :setting
-  after_create :add_setting
-
-
-def add_setting
-  Setting.create(user: self, enable_sms: true, enable_email: true)
-end 
+ 
 
 
 end
